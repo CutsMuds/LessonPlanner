@@ -27,7 +27,7 @@ namespace LessonPlanner
             }
             else
             {
-                MessageBox.Show("Такое готовое рассписание уже существует!");
+                MessageBox.Show("Такой заготовок уже существует!");
             }
         }
 

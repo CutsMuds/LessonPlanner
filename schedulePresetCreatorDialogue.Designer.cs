@@ -37,7 +37,7 @@
             // 
             nameField.Location = new Point(12, 12);
             nameField.Name = "nameField";
-            nameField.Size = new Size(303, 23);
+            nameField.Size = new Size(326, 23);
             nameField.TabIndex = 0;
             nameField.Text = "Имя";
             // 
@@ -53,7 +53,7 @@
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(174, 41);
+            cancelButton.Location = new Point(197, 41);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(141, 23);
             cancelButton.TabIndex = 2;
@@ -61,16 +61,16 @@
             cancelButton.UseVisualStyleBackColor = true;
             cancelButton.Click += cancelButton_Click;
             // 
-            // scheduleCreatorDialogue
+            // schedulePresetCreatorDialogue
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(327, 75);
+            ClientSize = new Size(350, 75);
             Controls.Add(cancelButton);
             Controls.Add(okButton);
             Controls.Add(nameField);
-            Name = "scheduleCreatorDialogue";
-            Text = "Создать готовое рассписание";
+            Name = "schedulePresetCreatorDialogue";
+            Text = "Создать заготовок рассписания";
             ResumeLayout(false);
             PerformLayout();
         }
