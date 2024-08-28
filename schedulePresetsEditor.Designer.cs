@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
+            schedulePresetComboBox = new ComboBox();
             button1 = new Button();
             SuspendLayout();
             // 
-            // comboBox1
+            // schedulePresetComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(12, 12);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(146, 23);
-            comboBox1.TabIndex = 0;
+            schedulePresetComboBox.FormattingEnabled = true;
+            schedulePresetComboBox.Location = new Point(12, 12);
+            schedulePresetComboBox.Name = "schedulePresetComboBox";
+            schedulePresetComboBox.Size = new Size(146, 23);
+            schedulePresetComboBox.TabIndex = 0;
             // 
             // button1
             // 
@@ -55,15 +55,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Controls.Add(comboBox1);
+            Controls.Add(schedulePresetComboBox);
             Name = "schedulePresetsEditor";
             Text = "Редактор готовых рассписаний";
+            Load += schedulePresetsEditor_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox schedulePresetComboBox;
         private Button button1;
     }
 }

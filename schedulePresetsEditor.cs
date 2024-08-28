@@ -12,9 +12,19 @@ namespace LessonPlanner
 {
     public partial class schedulePresetsEditor : Form
     {
+        List<schedulePreset> schedulePresets;
         public schedulePresetsEditor()
         {
             InitializeComponent();
+        }
+
+        private void schedulePresetsEditor_Load(object sender, EventArgs e)
+        {
+            schedulePresets = dbController.getSchedulePresets();
+            for(int i = 0; i < schedulePresets.Count; i++)
+            {
+                schedulePresetComboBox.Items.Add(schedulePresets[i].presetName);
+            }
         }
     }
 }
