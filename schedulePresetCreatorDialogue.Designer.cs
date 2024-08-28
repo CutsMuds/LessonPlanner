@@ -70,7 +70,7 @@
             Controls.Add(okButton);
             Controls.Add(nameField);
             Name = "schedulePresetCreatorDialogue";
-            Text = "Создать заготовок рассписания";
+            Text = "Создать заготовок расписания";
             ResumeLayout(false);
             PerformLayout();
         }

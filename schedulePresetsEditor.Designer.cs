@@ -58,7 +58,7 @@
             Controls.Add(createScheduleButton);
             Controls.Add(schedulePresetComboBox);
             Name = "schedulePresetsEditor";
-            Text = "Редактор заготовок рассписаний";
+            Text = "Редактор заготовок расписаний";
             Load += schedulePresetsEditor_Load;
             ResumeLayout(false);
         }
