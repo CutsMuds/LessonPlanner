@@ -74,9 +74,9 @@
             // schedulePresetsEditButton
             // 
             schedulePresetsEditButton.Name = "schedulePresetsEditButton";
-            schedulePresetsEditButton.Size = new Size(194, 22);
-            schedulePresetsEditButton.Text = "Готовые рассписания";
-            schedulePresetsEditButton.Click += this.schedulePresetsEditButton_Click;
+            schedulePresetsEditButton.Size = new Size(205, 22);
+            schedulePresetsEditButton.Text = "Заготовки рассписаний";
+            schedulePresetsEditButton.Click += schedulePresetsEditButton_Click;
             // 
             // MainForm
             // 

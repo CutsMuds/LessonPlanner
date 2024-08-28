@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using System;
 
 namespace LessonPlanner
 {
@@ -26,6 +27,37 @@ namespace LessonPlanner
                 }
             }
             return toReturn;
+        }
+        public static bool checkForSchedulePreset(string name)
+        {
+            SqliteCommand command = new SqliteCommand($"SELECT * FROM schedulePresets WHERE name=\"{name}\"", db);
+
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+        public static void createSchedulePreset(string name)
+        {
+            SqliteCommand command = new SqliteCommand($"INSERT INTO schedulePresets (key,name,tasks) VALUES ({getMaxSchedulePresetKey() + 1},\"{name}\",\"\")", db);
+            command.ExecuteNonQuery();
+        }
+        public static int getMaxSchedulePresetKey()
+        {
+            SqliteCommand command = new SqliteCommand("SELECT MAX(key) FROM schedulePresets", db);
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    return reader.GetInt32(0);
+                }
+                return -1;
+            }
         }
     }
 }
