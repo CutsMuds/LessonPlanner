@@ -11,53 +11,63 @@ namespace LessonPlanner
             db = new SqliteConnection("Data Source=db.db");
             db.Open();
         }
-        public static List<schedulePreset> getSchedulePresets()
+        public static List<int> getAllTasksDaysInMonth(int month)
         {
-            SqliteCommand сommand = new SqliteCommand("SELECT * FROM schedulePresets", db);
-            List<schedulePreset> toReturn = new List<schedulePreset>();
+            List<int> toReturn = new List<int>();
+            SqliteCommand command = new SqliteCommand($"SELECT day FROM days WHERE month = {month} AND year = {DateTime.Now.Year}", db);
 
-            using (SqliteDataReader reader = сommand.ExecuteReader())
+            using (SqliteDataReader reader = command.ExecuteReader())
             {
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        toReturn.Add(new schedulePreset(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
+                        toReturn.Add(reader.GetInt32(0));
                     }
                 }
             }
             return toReturn;
         }
-        public static bool checkForSchedulePreset(string name)
+        public static List<task> getAllTasksInDay(int day, int month)
         {
-            SqliteCommand command = new SqliteCommand($"SELECT * FROM schedulePresets WHERE name=\"{name}\"", db);
-
+            SqliteCommand command = new SqliteCommand($"SELECT 'index' FROM days WHERE month = {month} AND year = {DateTime.Now.Year} AND day = {day}", db);
+            int index = 0;
+            List<task> toReturn = new List<task>();
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                reader.Read();
+                index = reader.GetInt32(0);
+            }
+            command = new SqliteCommand($"SELECT * FROM '{index}'", db);
             using (SqliteDataReader reader = command.ExecuteReader())
             {
                 if (reader.HasRows)
                 {
-                    return true;
+                    while (reader.Read())
+                    {
+                        toReturn.Add(new task(reader.GetString(1), reader.GetString(2), (taskState)reader.GetInt32(3)));
+                    }
                 }
-                return false;
             }
+            return toReturn;
         }
-        public static void createSchedulePreset(string name)
+    }
+    public struct task
+    {
+        public string taskName;
+        public string taskInfo;
+        public taskState taskState;
+        public task(string name, string info, taskState state)
         {
-            SqliteCommand command = new SqliteCommand($"INSERT INTO schedulePresets (key,name,tasks) VALUES ({getMaxSchedulePresetKey() + 1},\"{name}\",\"\")", db);
-            command.ExecuteNonQuery();
+            taskName = name;
+            taskInfo = info;
+            taskState = state;
         }
-        public static int getMaxSchedulePresetKey()
-        {
-            SqliteCommand command = new SqliteCommand("SELECT MAX(key) FROM schedulePresets", db);
-            using (SqliteDataReader reader = command.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    return reader.GetInt32(0);
-                }
-                return -1;
-            }
-        }
+    }
+    public enum taskState
+    {
+        ready = 0,
+        workingOn = 1,
+        needsToMake = 2
     }
 }
