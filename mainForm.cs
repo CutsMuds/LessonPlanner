@@ -52,6 +52,7 @@ namespace LessonPlanner
             else
             {
                 tasksGroupBox.Text = "Задания: отсутствуют";
+                
             }
         }
     }
