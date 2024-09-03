@@ -30,7 +30,7 @@
         {
             daysTree = new TreeView();
             monthPicker = new ComboBox();
-            groupBox1 = new GroupBox();
+            tasksGroupBox = new GroupBox();
             SuspendLayout();
             // 
             // daysTree
@@ -41,7 +41,7 @@
             daysTree.PathSeparator = "/";
             daysTree.Size = new Size(184, 457);
             daysTree.TabIndex = 0;
-            daysTree.AfterExpand += daysTree_AfterExpand;
+            daysTree.AfterSelect += daysTree_AfterSelect;
             // 
             // monthPicker
             // 
@@ -53,23 +53,24 @@
             monthPicker.TabIndex = 1;
             monthPicker.SelectedIndexChanged += monthPicker_SelectedIndexChanged;
             // 
-            // groupBox1
+            // tasksGroupBox
             // 
-            groupBox1.Location = new Point(202, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(405, 486);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Задания";
+            tasksGroupBox.Location = new Point(202, 12);
+            tasksGroupBox.Name = "tasksGroupBox";
+            tasksGroupBox.Size = new Size(405, 486);
+            tasksGroupBox.TabIndex = 2;
+            tasksGroupBox.TabStop = false;
+            tasksGroupBox.Text = "Задания:";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(621, 510);
-            Controls.Add(groupBox1);
+            Controls.Add(tasksGroupBox);
             Controls.Add(daysTree);
             Controls.Add(monthPicker);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             Text = "Планировщик занятий";
             Load += mainForm_Load;
@@ -80,6 +81,6 @@
 
         private TreeView daysTree;
         private ComboBox monthPicker;
-        private GroupBox groupBox1;
+        private GroupBox tasksGroupBox;
     }
 }

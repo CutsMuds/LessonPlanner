@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using System;
 
 namespace LessonPlanner
 {
@@ -50,6 +49,18 @@ namespace LessonPlanner
                 }
             }
             return toReturn;
+        }
+        public static bool isHereTasks(int day, int month)
+        {
+            SqliteCommand command = new SqliteCommand($"SELECT 'index' FROM days WHERE month = {month} AND year = {DateTime.Now.Year} AND day = {day}", db);
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
     }
     public struct task

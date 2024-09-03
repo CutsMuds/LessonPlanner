@@ -32,12 +32,26 @@ namespace LessonPlanner
                 }
             }
         }
-        private void daysTree_AfterExpand(object sender, TreeViewEventArgs e)
+        private void daysTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            daysTree.SelectedNode = e.Node;
-            for (int i = 0; i < daysTree.Nodes.Count; i++)
+            TreeNode node = daysTree.SelectedNode;
+            if (daysTree.SelectedNode.Parent != null)
             {
-                if (!daysTree.Nodes[i].IsSelected) daysTree.Nodes[i].Collapse();
+                node = daysTree.SelectedNode.Parent;
+            }
+            loadTasks(node.Index + 1);
+        }
+        private void loadTasks(int day)
+        {
+            Text = $"selected day: {day} | {dbController.isHereTasks(day, monthPicker.SelectedIndex + 1)}";
+
+            if(dbController.isHereTasks(day, monthPicker.SelectedIndex + 1))
+            {
+                tasksGroupBox.Text = "Задания:";
+            }
+            else
+            {
+                tasksGroupBox.Text = "Задания: отсутствуют";
             }
         }
     }
