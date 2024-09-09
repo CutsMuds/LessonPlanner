@@ -2,4 +2,8 @@
 
 Простой проект, сделанный для себя, для организации своей учебы
 
-## aaa
+## Использование
+
+```
+https://github.com/CutsMuds/LessonPlanner/releases
+```
