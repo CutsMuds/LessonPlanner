@@ -3,7 +3,7 @@
 Простой проект, сделанный для себя, для организации своей учебы, использующий БД SQLite
 
 <p align="center">
-    <img src="img/screenshot.png" alt="Logo">
+    <img src="img/screenshot.png" alt="mainImg">
 </p>
 
 ## Использование
