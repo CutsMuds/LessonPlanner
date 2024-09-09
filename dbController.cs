@@ -119,7 +119,10 @@ namespace LessonPlanner
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    return reader.GetInt32(0);
+                    if(!reader.IsDBNull(0))
+                    {
+                        return reader.GetInt32(0);
+                    }
                 }
                 return -1;
             }
